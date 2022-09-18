@@ -2,34 +2,24 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root to: 'homes#top'
-  end
-  namespace :admin do
     resources :items
-  end
-  namespace :admin do
     resources :genres
-  end
-  namespace :admin do
     resources :customers
-  end
-  namespace :admin do
     resources :orders
-  end
-  namespace :admin do
     resources :order_ditails
   end
 
-
-  root to: 'homes#top'
-  get '/about' => "homes#about"
-
-  resources :addresses
-  resources :orders
-  resources :cart_items
-  resources :items
-  get 'customers/mypage' => 'customers#show'
-  get 'customers/mypage/edit' => 'customers#edit'
-  get 'customers/unsubscribe' => 'customers#unsubscribe'
+  scope module: :public do
+    root to: 'homes#top'
+    get '/about' => "homes#about"
+    resources :addresses
+    resources :orders
+    resources :cart_items
+    resources :items
+    get 'customers/mypage' => 'customers#show'
+    get 'customers/mypage/edit' => 'customers#edit'
+    get 'customers/unsubscribe' => 'customers#unsubscribe'
+  end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
   # 顧客用
