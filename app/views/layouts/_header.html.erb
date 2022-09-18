@@ -1,6 +1,69 @@
 <% if public_signe_in? %>
  <li>
-   <%= link_to public_do%>
+   <%= link_to customers do%>
       マイページ
    <% end %>
  </li>
+ <li>
+   <%= link_to public_do do%>
+      商品一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      カート
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      ログアウト
+   <% end %>
+ </li>
+<% elsif admin_sigin_in? %>
+ <li>
+   <%= link_to public_do do%>
+      商品一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      会員一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      注文履歴一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      ジャンル一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      ログアウト
+   <% end %>
+ </li>
+<% else %>
+ <li>
+   <%= link_to public_do do%>
+      About
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      商品一覧
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      新規登録
+   <% end %>
+ </li>
+ <li>
+   <%= link_to public_do do%>
+      ログイン
+   <% end %>
+ </li>
+<% end %>
