@@ -1,16 +1,16 @@
 <% if public_signe_in? %>
  <li>
-   <%= link_to customers do%>
+   <%= link_to customers_mypage_path(current_user) do%>
       マイページ
    <% end %>
  </li>
  <li>
-   <%= link_to public_do do%>
+   <%= link_to items_path do%>
       商品一覧
    <% end %>
  </li>
  <li>
-   <%= link_to public_do do%>
+   <%= link_to  do%>
       カート
    <% end %>
  </li>
