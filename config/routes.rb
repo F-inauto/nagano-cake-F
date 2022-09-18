@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   resources :orders
   resources :cart_items
   resources :items
-  get 'customers/mypage' => 'customers#mypage'
+  get 'customers/mypage' => 'customers#show'
   get 'customers/mypage/edit' => 'customers#edit'
   get 'customers/unsubscribe' => 'customers#unsubscribe'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
