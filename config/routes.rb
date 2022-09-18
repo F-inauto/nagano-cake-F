@@ -1,5 +1,33 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    get 'homes/top'
+  end
+  namespace :admin do
+    get 'items/index'
+    get 'items/new'
+    get 'items/show'
+    get 'items/edit'
+  end
+  namespace :admin do
+    get 'genres/index'
+    get 'genres/create'
+    get 'genres/edit'
+    get 'genres/update'
+  end
+  namespace :admin do
+    get 'customers/index'
+    get 'customers/show'
+    get 'customers/edit'
+    get 'customers/update'
+  end
+  namespace :admin do
+    get 'orders/show'
+    get 'orders/update'
+  end
+  namespace :admin do
+    get 'order_ditails/update'
+
   namespace :public do
     get 'addresses/index'
     get 'addresses/edit'
