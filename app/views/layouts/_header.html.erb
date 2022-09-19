@@ -2,14 +2,6 @@
    <div class = "container">
       <a class="navbar-brand" href="/">logo</a>
       <% if customer_signed_in? %>
-        <p>
-           ようこそ、
-           <% customers.last_name%>
-           さん！
-        </p>
-      <% end %>
-
-      <% if customer_signed_in? %>
        <li>
          <%= link_to customers_mypage_path(current_customer) do%>
             マイページ
