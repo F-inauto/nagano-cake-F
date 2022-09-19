@@ -12,15 +12,23 @@
     <tbody>
       <% @items.each do |item| %>
       <tr>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
+        <th><%= item.id %></th>
+        <th>
+          <%= link_to admin_item_path(admin.item.id) do %>
+          <%= item.name %>
+          <% end %>
+        </th>
+        <th><%= item.price %></th>
+        <th><%= item.genre.id %></th>
+        <!--販売ステータスの表記の仕方-->
+        <th>
+            <%=           %>
+        </th>
       </tr>
+      <% end %>
     </tbody>
 
-      <% end %>
+
 
 
 
