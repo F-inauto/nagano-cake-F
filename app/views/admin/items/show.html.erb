@@ -1,6 +1,7 @@
 <h2>商品詳細</h2>
 
 <!--商品画像-->
+<%= image_tag @item.item_image, size: "200x200" %>
 
 
 <!--商品詳細-->
@@ -12,8 +13,8 @@
     <th><%= @item.introduction %></th>
     <th>ジャンル</th>
     <th><%= @item.genre.id %></th>
-    <th>税込価格(税抜価格) %></th>
-    <th><%= @item.price %></th>
+    <th> 税込価格(税抜価格) </th>
+    <th><%= @item.price %>円</th>
     <!--Q：販売ステータス反映させる方法-->
     <th>販売ステータス</th>
     <th></th>
@@ -22,5 +23,5 @@
 
 
 <div>
-  <%= link_to "編集する"  edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+  <%= link_to "編集する", edit_admin_item_path(@item.id), class: 'btn btn-success' %>
 </div>
