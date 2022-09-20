@@ -2,64 +2,50 @@
 
 
 <!--form_with記述-->
-<%= form_with(model: @item, local: true) do |form| %>
+<%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
 
-  <!--商品画像--><!--Q:画像選択のフォームがわからない-->
+  <!--商品画像-->
   <div>
-    <%= f.label :商品画像 %>
-    <%= f.attachment_field :image %>
+    <%= f.label :"商品画像" %>
+    <%= f.file_field :item_image, accept: "image/*" %>
   </div>
 
   <!--商品名-->
   <div>
-    <%= f.label :商品名 %>
+    <%= f.label :"商品名" %>
     <%= f.text_field :name %>
   </div>
 
   <!--商品説明-->
   <div>
-    <%= f.label :商品説明 %>
+    <%= f.label :"商品説明" %>
     <%= f.text_area :introduction %>
   </div>
 
   <!--ジャンル--><!--Q:ジャンルを選択するフォームがわからない-->
   <div>
-    <%= f.label :ジャンル %>
-    <%= %>
+    <%= f.label :"ジャンル" %>
+    <%= f.collection_select :genre_id, Genre.all, :id, :name %>
   </div>
 
   <!--税抜価格-->
   <div>
-    <%= f.label :税抜価格 %>
-    <%= f.text_field :price %>
+    <%= f.label :"税抜価格" %>
+    <%= f.text_field :price %>円
   </div>
 
   <!--販売ステータス--><!--Q:ステータスを選択するボタンがわからない-->
   <div>
-    <%= f.label :販売ステータス %>
-    <%=  %>
+    <%= f.label :"販売ステータス" %>
+    <%= f.radio_button :is_active, true %>
+    <%= f.label :販売中 %>
+    <%= f.radio_button :is_active, false %>
+    <%= f.label :販売停止中 %>
   </div>
 
-  <!--変更を保存-->
+  <!--変更ボタン-->
   <div>
     <%= f.submit "変更を保存", class: 'btn btn-success' %>
   </div>
 <% end %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
