@@ -8,6 +8,8 @@ class Admin::ItemsController < ApplicationController
   end
 
   def create
+    @item = new
+    @item.save
   end
 
   def show
@@ -19,8 +21,16 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+    @item = Item.find(params[:id])
+    @item.update
   end
 
+  def destroy
+    @items = Item.all
+    @item = Item.find(params[:id])
+    @item.destroy
+
+  end
 
   private
     def item_params
