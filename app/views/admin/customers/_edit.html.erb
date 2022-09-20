@@ -1,0 +1,49 @@
+<h2><%= customer.last_name %><%= customer.first_name %>さんの会員情報編集</h2>
+<table class='table'>
+	  <th>会員ID</th>
+	  <th><%= customer.id %></th>
+	  <%= form_with model:customer, local:true do |f| %>
+      <div class="form-group">
+        <th>氏名</th>
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name, class: "form-control last_name" %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name, class: "form-control first_name" %>
+      </div>
+      <div class="form-group">
+        <th>フリガナ</th>
+        <%= f.label :last_name_kana %>
+        <%= f.text_field :last_name_kana, class: "form-control last_name_kana" %>
+        <%= f.label :first_name_kana %>
+        <%= f.text_field :first_name_kana, class: "form-control first_name_kana" %>
+      </div>
+      <div class="form-group">
+        <th>郵便番号</th>
+        <%= f.label :customer.post_number %>
+        <%= f.text_area :customer.post_number, class: "form-control customer.post_number" %>
+      </div>
+      <div class="form-group">
+        <th>住所</th>
+        <%= f.label :customer.address %>
+        <%= f.text_area :customer.address, class: "form-control customer.address" %>
+      </div>
+      <div class="form-group">
+        <th>電話番号</th>
+        <%= f.label :customer.phone_number %>
+        <%= f.text_area :customer.phone_number, class: "form-control customer.phone_number" %>
+      </div>
+      <div class="form-group">
+        <th>メールアドレス</th>
+        <%= f.label :customer.email%>
+        <%= f.text_area :customer.email, class: "form-control customer.email" %>
+      </div>
+      <div class="form-group">
+        <th>会員ステータス</th>
+        <%= f.label :customer.post_number %>
+        <%= f.text_field :customer.is_valid, class: "form-control customer.is_valid" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit class: 'btn btn-secondary' %>
+      </div>
+    <% end %>
+</table>
