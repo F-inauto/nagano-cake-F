@@ -1,2 +1,26 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<!--countメソッドの使い方-->
+<h2>商品一覧　(全#{@item.all.count}件)</h2>
+
+<!--商品一覧-->
+<% @items.each do |item| %>
+<table>
+  <tr>
+    <th>
+      <%= link_to item_path() do %>
+      <%= image %>
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th>
+      <%= item.name %>
+    </th>
+  </tr>
+  <tr>
+    <th>
+      <%= item.price %>
+    </th>
+  </tr>
+</table>
+
+<!--ページネーション加える-->

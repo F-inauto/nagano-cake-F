@@ -1,2 +1,13 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<!--画像-->
+
+
+<!--商品名-->
+<h2><%= @item.name %></h2>
+<p><%= @item.introduction %>></p>
+<h3>¥<%= @item.price %>(税込)</h3>
+
+<!--個数選択-->
+
+
+<!--カートに入れる-->
+<%= f.submit "カートに入れる", class: "btn btn-success" %>
