@@ -23,7 +23,7 @@
         <!--税抜価格-->
         <th><%= item.price %></th>
         <!--ジャンル-->
-        <th><%= item.genre_id %></th>
+        <th><%= item.genre.name %></th>
         <!--Q：販売ステータスの表記の仕方--><!--わからないところ-->
         <th>
             <%=           %>
@@ -31,13 +31,7 @@
       </tr>
       <% end %>
     </tbody>
-
+  </table>
     <!--ページネーション必要（３P毎表記）-->
+    <%= paginate @items %>
 
-
-
-
-
-
-
- </table>

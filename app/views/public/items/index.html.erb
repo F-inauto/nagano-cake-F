@@ -1,13 +1,13 @@
 <!--countメソッドの使い方-->
-<h2>商品一覧　(全#{@item.all.count}件)</h2>
+<h2>商品一覧(全#{@item.all.count}件)</h2>
 
 <!--商品一覧-->
 <% @items.each do |item| %>
 <table>
   <tr>
     <th>
-      <%= link_to item_path(admin.item.id) do %>
-      <%= image %>
+      <%= link_to item_path(item) do %>
+      <%= image_tag item.get_item_image, size: "200x200" %>
       <% end %>
     </th>
   </tr>
@@ -25,3 +25,4 @@
 </table>
 
 <!--ページネーション加える-->
+<%= paginate @items %>

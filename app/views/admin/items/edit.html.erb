@@ -2,7 +2,7 @@
 
 
 <!--form_with記述-->
-<%= form_with model: @item, url: admin_items_path, method: :post, local: true do |f| %>
+<%= form_with model: @item, url: admin_item_path(@item), method: :patch, local: true do |f| %>
 
   <!--商品画像-->
   <div>
