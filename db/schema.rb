@@ -41,6 +41,10 @@ ActiveRecord::Schema.define(version: 2022_09_20_114049) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "post_number"
+    t.string "address"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -59,6 +63,8 @@ ActiveRecord::Schema.define(version: 2022_09_20_114049) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "quantity", null: false
+    t.integer "item_id", null: false
+    t.integer "customer_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -84,7 +90,6 @@ ActiveRecord::Schema.define(version: 2022_09_20_114049) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

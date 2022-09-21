@@ -5,4 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum is_valid: { '有効': true, '退会': false }
+
+  def active_for_authentication?
+    super && (is_valid == '有効')
+  end
 end

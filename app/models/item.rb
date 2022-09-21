@@ -12,11 +12,15 @@ class Item < ApplicationRecord
   validates :price, presence: true
 
 
+
   def get_item_image
     (item_image.attached?) ? item_image : "no_image.jpg"
   end
 
-
+  # 消費税を加えた商品価格
+  def add_tax_price
+      (self.price * 1.10).round
+  end
 
 
 end

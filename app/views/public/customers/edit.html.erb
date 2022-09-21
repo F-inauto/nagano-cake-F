@@ -30,6 +30,6 @@
       <tr class="form-group">
         <th><%= f.submit "変更する", class: 'btn btn-success' %></th>
       </tr>
-    <%= link_to "退会する" ,customers_unsubscribe_path(current_customer), class: 'btn btn-danger' %>
+    <%= link_to "退会する" , unsubscribe_path(current_customer), class: 'btn btn-danger' %>
   </table>
 <% end %>

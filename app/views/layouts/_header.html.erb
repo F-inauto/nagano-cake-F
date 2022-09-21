@@ -1,11 +1,18 @@
 <nav class = "navbar navbar-expand-lg navbar-light bg-light">
    <div class = "container">
-      <a class="navbar-brand" href="/">logo</a>
+      <a class="navbar-brand" href="/">NAGANO CAKE</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
+      <div class = "navbar-nav">
+         <% if customer_signed_in? %>
+            <li>
+              ようこそ、<%= @customer.last_name %>さん！
+            </li>
+         <% end %>
+      </div>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+         <ul class="navbar-nav ml-auto">
             <% if customer_signed_in? %>
              <li>
                <%= link_to customers_mypage_path,class: 'btn' do%>
