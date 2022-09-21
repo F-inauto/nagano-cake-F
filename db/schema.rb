@@ -10,9 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2022_09_20_114049) do
-
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -43,6 +41,10 @@ ActiveRecord::Schema.define(version: 2022_09_20_114049) do
   end
 
   create_table "addresses", force: :cascade do |t|
+    t.integer "customer_id"
+    t.string "post_number"
+    t.string "address"
+    t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -71,13 +73,13 @@ ActiveRecord::Schema.define(version: 2022_09_20_114049) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "address", null: false
-    t.string "post_number", null: false
-    t.string "phone_number", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "address"
+    t.string "post_number"
+    t.string "phone_number"
     t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
