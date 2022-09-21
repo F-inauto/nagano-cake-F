@@ -1,4 +1,7 @@
+<%= form_with model: @item, url: admin_items_path, method: :get, local: true do |f| %>
+
 <!--画像-->
+<%= image_tag @item.get_item_image, size: "200x200" %>
 
 
 <!--商品名-->
@@ -7,7 +10,9 @@
 <h3>¥<%= @item.price %>(税込)</h3>
 
 <!--個数選択-->
-
+<%= f.label "個数選択" %>
 
 <!--カートに入れる-->
 <%= f.submit "カートに入れる", class: "btn btn-success" %>
+
+<% end %>
