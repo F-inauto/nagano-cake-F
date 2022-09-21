@@ -16,6 +16,14 @@ class Public::CustomersController < ApplicationController
   def unsubscribe
   end
 
+  def withdrawal
+    @customer = current_customer
+    @customer.update(is_valid: false)
+    reset_session
+    flash[:notice] = "退会処理を行いました"
+    redirect_to root_path
+  end
+
   private
 
   def customer_params
