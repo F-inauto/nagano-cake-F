@@ -15,8 +15,6 @@ Rails.application.routes.draw do
     resources :addresses
     resources :orders
     resources :cart_items
-    
-    
     resources :items
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
