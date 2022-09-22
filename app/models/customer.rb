@@ -4,6 +4,8 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_many :cart_items
+
   enum is_valid: { '有効': true, '退会': false }
 
   def active_for_authentication?
