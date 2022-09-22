@@ -2,7 +2,7 @@
  <div class="row">
   <div class="color">
 <!--countメソッドの使い方-->
-<h2>商品一覧(全#{@item.all.count}件)</h2>
+<h2>商品一覧(全<%= @items.all.count %>件)</h2>
 
 <div class="col-10">
 <!--商品一覧-->
@@ -24,7 +24,7 @@
   </tr>
   <tr>
     <th>
-      <%= item.price %>
+      ¥<%= item.add_tax_price.to_s(:dalimited) %>
     </th>
   </tr>
 <% end %>
