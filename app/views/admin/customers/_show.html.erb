@@ -1,4 +1,4 @@
-<h2><%= customer.last_name %><%= customer.first_name %>さんの会員詳細</h2>
+<h3><%= customer.last_name %><%= customer.first_name %>さんの会員詳細</h3>
 <table class='table'>
   <tr>
 	  <th>会員ID</th>
@@ -30,6 +30,14 @@
   </tr>
   <tr>
 	  <th>会員ステータス</th>
-	  <th><%= customer.is_valid %></th>
+	  <% if customer.is_valid == '有効'  %>
+	    <th class = "text-success">
+	      <%= customer.is_valid %>
+	    </th>
+	  <%else%>
+	    <th class = "text-danger">
+	      <%= customer.is_valid %>
+	    </th>
+	  <% end %>
   </tr>
 </table>
