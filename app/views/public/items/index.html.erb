@@ -1,11 +1,17 @@
+<div class="container">
+ <div class="row">
+  <div class="color">
 <!--countメソッドの使い方-->
-<h2>商品一覧(全#{@item.all.count}件)</h2>
+<h2>商品一覧(全<%= @items.all.count %>件)</h2>
 
+<div class="col-10">
 <!--商品一覧-->
 <% @items.each do |item| %>
+<div class="row">
 <table>
   <tr>
     <th>
+      <div class="col-3">
       <%= link_to item_path(item) do %>
       <%= image_tag item.get_item_image, size: "200x200" %>
       <% end %>
@@ -18,7 +24,7 @@
   </tr>
   <tr>
     <th>
-      <%= item.price %>
+      ¥<%= item.add_tax_price.to_s(:dalimited) %>
     </th>
   </tr>
 <% end %>

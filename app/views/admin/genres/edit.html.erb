@@ -1,7 +1,10 @@
-<h2>ジャンル編集</h2>
+<div class="container">
+  <div class="row">
+    <h5 class="p-4"><span class="col-md-3 bg-light text-center m-4">ジャンル編集</span></h5>
+  </div>
 
 <%=form_with model: @genre,url: admin_genre_path,method: :patch do |f| %>
  <table>
-  <tr><th>ジャンル名</th><td><%=f.text_field:name%></td><td><%=f.submit"変更を保存"%></td></tr>
+  <tr><th>ジャンル名</th><td><%=f.text_field:name%></td><td><%=f.submit"変更を保存",class: 'btn btn-success'%></td></tr>
  </table>
 <%end%>
