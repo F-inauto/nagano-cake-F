@@ -1,8 +1,10 @@
-<h4>配送先登録/⼀覧</h4>
-</div>
+<div class="container">
+  <div class="row">
+    <h5 class="p-4"><span class="col-md-3 bg-light text-center m-4">配送先登録/一覧</span></h5>
+  </div>
 
 <%= form_with model: @address, url: addresses_path, method: :post, local:true do |f| %>
-
+<table class="table-light table">
 <tr>
 <th>郵便番号(ハイフンなし)</th>
 <td> <%= f.text_field :post_number, placeholder: "0000000" %></td>
@@ -20,7 +22,8 @@
 </table>
 <% end %>
 
-
+<table class="table-striped table table-hover">
+<thead class="thead-light">
 <tr>
 <th>郵便番号</th>
 <th>住所</th>

@@ -1,16 +1,25 @@
-<h2>ジャンル一覧・追加</h2>
+<div class="container">
+  <div class="row">
+    <h5 class="p-4"><span class="col-md-3 bg-light text-center m-4">ジャンル一覧・追加</span></h5>
+  </div>
 
 <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
 
-
+<table class="table">
  <table>
-   <tr><th>ジャンル名</th><td><%= f.text_field :name %></td><td><%= f.submit'新規登録' %></td></tr>
+   <tr><th>ジャンル名</th><td><%= f.text_field :name %></td><td><%= f.submit'新規登録',class: 'btn btn-success' %></td></tr>
  </table>
 <%end%>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <table class="table table-hover table-inverse">
  <table>
     <thead>
       <tr>
+        <table class="table-striped table table-hover">
+        <thead class="thead-light">
         <th>ジャンル</th>
       </tr>
     </thead>
@@ -18,7 +27,7 @@
     <tbody>
       <tr>
         <td><%=genre.name%></td>
-        <td><%=link_to"編集する",edit_admin_genre_path(genre.id)%></td>
+        <td><%=link_to"編集する",edit_admin_genre_path(genre.id),class: 'btn btn-success'%></td>
       </tr>
     </tbody>
   <%end%>
