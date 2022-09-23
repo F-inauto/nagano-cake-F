@@ -17,9 +17,9 @@ class Public::CartItemsController < ApplicationController
 
        # もしカート内に「同じ」商品がない場合は通常の保存処理
     elsif @cart_item.save
-       redirect_to cart_items_path
+      redirect_to cart_items_path
     else # 保存できなかった場合
-        render 'index'
+      redirect_to request.referer
     end
   end
 
@@ -28,9 +28,27 @@ class Public::CartItemsController < ApplicationController
     @cart_items = current_customer.cart_items.all
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.update(cart_item_params)
+    redirect_to cart_items_path
+  end
+
+  def destroy
+    @cart_item = CartItem.find(params[:id])
+    @cart_item.destroy
+    redirect_to cart_items_path
+  end
+
+  def all_destroy #カート内全て削除
+    @cart_items = CartItem.all
+    @cart_items.destroy_all
+    redirect_to cart_items_path
+  end
+
   private
 
   def cart_item_params
-      params.require(:cart_item).permit(:item_id, :quantity)
+    params.require(:cart_item).permit(:item_id, :quantity)
   end
 end
