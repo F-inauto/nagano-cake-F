@@ -1,7 +1,8 @@
 class Admin::OrdersController < ApplicationController
   def index
     @orders = Order.page(params[:page]).per(10)
-    # @order = Customer.find(params[:id])
+    # @orders = Customer.find(params[:id])
+    # @order = Order.find(params[:id])
   end
 
   def crate
