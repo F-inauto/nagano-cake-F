@@ -5,6 +5,8 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :cart_items
+  has_many :addresses
+  has_many :orders
 
   enum is_valid: { '有効': true, '退会': false }
 

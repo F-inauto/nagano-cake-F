@@ -13,7 +13,9 @@ Rails.application.routes.draw do
     root to: 'homes#top'
     get '/about' => "homes#about"
     resources :addresses
-    resources :orders
+    resources :orders do
+      post 'order/confirm' => 'orders#confirm'
+    end
     resources :cart_items, only: [:index, :create, :update, :destroy] do
       delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
     end

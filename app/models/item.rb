@@ -10,6 +10,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
+  has_many :order_items
 
 
 
