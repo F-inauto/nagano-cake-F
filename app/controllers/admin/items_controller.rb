@@ -28,9 +28,10 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
+    @items = Item.all
     @item = Item.find(params[:id])
     @item.destroy
-      redirect_to admin_items_path
+      redirect_to admin_items_path(@item.id)
 
   end
 
