@@ -1,21 +1,22 @@
-<div class="container">
-  <div class="row">
+<div class='container'>
+  <div class ='row'>
+    <div class ='col-md-3'>
 <%= render 'public/items/genre_search', genres: @genres %>
-
-<div class="container">
-    <div class="row">
-        <div class="color">
+     </div>
+   
+ <div class="container">
+  <div class="row">
+   <div class="color">
 <!--countメソッドの使い方-->
 <h2>商品一覧(全<%= @items.all.count %>件)</h2>
 <!--商品一覧-->
 <div class="col-10">
-<div class="row">
+   <div class="row">
 <% @items.each do |item| %>
 <table>
   <tr>
     <th>
-      <div class="col-3">
-      <%= link_to item_path(item) do %>
+      <%= link_to item_path(item) , class: "col-3 text-center text-dark text-nowrap mt-5" do %>
       <%= image_tag item.get_item_image, size: "200x200" %>
       <% end %>
     </th>
@@ -34,8 +35,11 @@
 </table>
 
   </div>
+   <div class="row">
+      <div class="center-block mx-auto"><br><br>
 <!--ページネーション加える-->
 <%= paginate @items %>
+ 
     </div>
   </div>
 </div>
