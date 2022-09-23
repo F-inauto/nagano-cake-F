@@ -1,6 +1,7 @@
 class Public::ItemsController < ApplicationController
 
   def index
+    @genres = Genre.all
     #ジャンルIDあるとき
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
