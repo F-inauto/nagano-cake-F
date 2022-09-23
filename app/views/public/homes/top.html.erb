@@ -1,13 +1,49 @@
 <div class='container'>
   <div class ='row'>
     <div class ='col-md-3'>
-
+      <%= render 'public/items/genre_search', genres: @genres %>
     </div>
     <div class='col-md-8'>
-      <table>
-        <%= image_tag "image1-15.jpeg", size:'550x450' %>
-      </table>
-
+      <div class="row">
+        <table>
+          <tr>
+            <%= image_tag "image1-15.jpeg", size:'600x350' %>
+          </tr>
+          <tr>
+            ようこそ、ながのCAKEへ！</br>
+            このサイトは、ケーキ販売のECサイトになります。</br>
+            会員でない方も商品の閲覧はできますが、</br>
+            購入には会員登録が必要になります。
+          </tr>
+        </table>
+      </div>
+      <div class ="row">
+        <% @items.each do |item| %>
+          <table>
+            <tbody>
+              <tr>
+                <th>
+                  <div class="col-3">
+                  <%= link_to item_path(item) do %>
+                  <%= image_tag item.get_item_image, size: "200x200" %>
+                  <% end %>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  <%= item.name %>
+                </th>
+              </tr>
+              <tr>
+                <th>
+                  ¥<%= item.with_tax_price.to_s(:dalimited) %>
+                </th>
+              </tr>
+            </tbody>
+          </table>
+        <% end %>
+      </div>
+      <%= link_to "全ての商品を見る>",items_path %>
     </div>
   </div>
 </div>
