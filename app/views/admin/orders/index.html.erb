@@ -1,4 +1,4 @@
-<h2>注文履歴一覧</h2>
+<h3>注文履歴一覧</h3>
 <table>
     <thead>
       <tr>
@@ -9,18 +9,20 @@
       </tr>
     </thead>
     <tbody>
-      <% @oders.each do |oder| %>
+      <% @orders.each do |order| %>
       <tr>
-        <!--購入日時-->
-        <th></th>
+        <!--購入日時(lメソッドを使う)-->
+        <td><%= link_to l order.created_at, admin_order_path(order.id) %></td>
         <!--購入者-->
-        <th></th>
+        <td><%= order.customer.name %></td>
         <!--注文個数-->
-        <th></th>
+        <td><%= order.quantity %></td>
         <!--注文ステータス-->
-
-
+        <td><%= order.order_status %></td>
       </tr>
+      <% end %>
     </tbody>
-    <tbody>
   </table>
+
+  <!--ページネーション必要（３P毎表記）-->
+  <%= paginate @orders %>
