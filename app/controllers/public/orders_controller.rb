@@ -21,8 +21,9 @@ class Public::OrdersController < ApplicationController
 # view で定義している address_number が"1"だったときにこの処理を実行します
 # form_with で @order で送っているので、order に紐付いた address_number となります。以下同様です
 # この辺の紐付けは勉強不足なので gem の pry-byebug を使って確認しながら行いました
-    @order.name = current_customer.last_name # @order の各カラムに必要なものを入れます
+    @order.name = current_customer.last_name# @order の各カラムに必要なものを入れます
     @order.address = current_customer.address
+    @order.post_number = current_customer.post_number
   elsif params[:order][:address_number] == "2"
 # view で定義している address_number が"2"だったときにこの処理を実行します
     if Address.exists?(name: params[:order][:registered])
@@ -47,7 +48,7 @@ class Public::OrdersController < ApplicationController
   @cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
   @sum = 0
 # 合計金額を出す処理です sum_price はモデルで定義したメソッドです
-end
+  end
 
  # 購入を確定します
 def create # Order に情報を保存します
@@ -60,7 +61,7 @@ def create # Order に情報を保存します
     cart_items.each do |cart_item|
 # 取り出したカートアイテムの数繰り返します
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
-      order = Order.new
+      order =Order.new
       order.customer_id = cart_item.customer_id
       order.customer_id = @order.id
       order.total_payment = cart_item.quantity
@@ -69,7 +70,7 @@ def create # Order に情報を保存します
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order.save
     end
-    redirect_to orders_path
+    redirect_to order_orders_complete_path(current_customer)
     cart_items.destroy_all
 # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
   else
@@ -81,7 +82,7 @@ end
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :item_id)
+    params.require(:order).permit(:payment_method, :post_number, :address, :name, :item_id)
   end
 
   def address_params
