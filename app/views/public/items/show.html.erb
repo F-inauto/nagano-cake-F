@@ -5,16 +5,16 @@
       <%= render 'public/items/genre_search', genres: @genres %>
     </div>
     
-       <div class="col-3 offset-2 mr-3 my-5">
+    <div class="col-3 offset-2 mr-3 my-5">
       <!--画像-->
       <%= image_tag @item.get_item_image, size: "200x200" %>
       <thead>
         <tr>
           <th></th>
-
+          
           <!--商品名-->
-          <h2><%= @item.name %></h2>
-          <%= @item.introduction %>
+          <p class="h3"><span class ="bg-light font-weight-bold"><h2><%= @item.name %></h2></p></span>
+          <p class="h5"><%= @item.introduction %></p><br>
            <div class="font-weight-bold mt-3 text-nowrap">
           <h3>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</h3>
         </tr>
