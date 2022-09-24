@@ -20,6 +20,7 @@
         </tbody>
       </table>
     </div>
+
         <p>送料</p>
         1000
         <p>合計金額</p>
@@ -28,7 +29,7 @@
         <%= @sum + 1000 %>
 
     <th>支払方法</th>
-
+    <%= @order.payment_method %>
     <p>お届け先</p>
     <%= @order.post_number %>
     <%= @order.address %>
