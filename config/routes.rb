@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :items
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
+    patch 'customers/mypage' =>  'customer#update'
     get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
     patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end

@@ -75,13 +75,13 @@ ActiveRecord::Schema.define(version: 2022_09_24_063407) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "last_name", null: false
-    t.string "first_name", null: false
-    t.string "last_name_kana", null: false
-    t.string "first_name_kana", null: false
-    t.string "address", null: false
-    t.string "post_number", null: false
-    t.string "phone_number", null: false
+    t.string "last_name"
+    t.string "first_name"
+    t.string "last_name_kana"
+    t.string "first_name_kana"
+    t.string "address"
+    t.string "post_number"
+    t.string "phone_number"
     t.boolean "is_valid", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -120,10 +120,8 @@ ActiveRecord::Schema.define(version: 2022_09_24_063407) do
     t.string "post_number"
     t.string "address"
     t.string "name"
-    t.integer "quantity", null: false
     t.integer "shipping_cost"
     t.integer "total_payment"
-    t.integer "quantity", null: false
     t.integer "payment_method", default: 0, null: false
     t.integer "order_status", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
