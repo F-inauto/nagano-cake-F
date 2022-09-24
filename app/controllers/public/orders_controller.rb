@@ -63,13 +63,12 @@ def create # Order に情報を保存します
     cart_items.each do |cart_item|
 # 取り出したカートアイテムの数繰り返します
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
-      order_detail = OrderDitail.new
+      order_detail = OrderDetail.new
       order_detail.order_id = @order.id
       order_detail.item_id = cart_item.item_id
       order_detail.price = cart_item.item.with_tax_price
       order_detail.quantity = cart_item.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
-      order.total_payment = cart_item.quantity
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order_detail.save
     end
