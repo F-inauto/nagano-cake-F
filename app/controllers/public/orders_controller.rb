@@ -69,6 +69,7 @@ def create # Order に情報を保存します
       order_detail.price = cart_item.item.with_tax_price
       order_detail.quantity = cart_item.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
+
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order_detail.save
     end
@@ -84,7 +85,7 @@ end
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_number, :address, :name, :item_id)
+    params.require(:order).permit(:payment_method, :post_number, :address, :name, :item_id, :total_payment)
   end
 
   def address_params
