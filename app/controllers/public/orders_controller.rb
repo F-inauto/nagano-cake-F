@@ -56,20 +56,22 @@ def create # Order に情報を保存します
   cart_items = current_customer.cart_items.all
 # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
   @order = current_customer.orders.new(order_params)
+  @order.customer_id = current_customer.id
 # 渡ってきた値を @order に入れます
   if @order.save
 # ここに至るまでの間にチェックは済ませていますが、念の為IF文で分岐させています
     cart_items.each do |cart_item|
 # 取り出したカートアイテムの数繰り返します
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
-      order = Order.new
-      order.customer_id = cart_item.customer_id
-      order.customer_id = @order.id
-      order.total_payment = cart_item.quantity
+      order_detail = OrderDitail.new
+      order_detail.order_id = @order.id
+      order_detail.item_id = cart_item.item_id
+      order_detail.price = cart_item.item.with_tax_price
+      order_detail.quantity = cart_item.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
       order.total_payment = cart_item.quantity
 # カート情報を削除するので item との紐付けが切れる前に保存します
-      order.save
+      order_detail.save
     end
     redirect_to order_orders_complete_path(current_customer)
     cart_items.destroy_all
