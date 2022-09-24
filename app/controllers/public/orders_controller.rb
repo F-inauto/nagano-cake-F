@@ -26,10 +26,11 @@ class Public::OrdersController < ApplicationController
     @order.post_number = current_customer.post_number
   elsif params[:order][:address_number] == "2"
 # view で定義している address_number が"2"だったときにこの処理を実行します
-    if Address.exists?(name: params[:order][:registered])
+    if Address.exists?(params[:order][:address_id])
 # registered は viwe で定義しています
-      @order.name = Address.find(params[:order][:registered]).name
-      @order.address = Address.find(params[:order][:registered]).address
+      @order.name = Address.find(params[:order][:address_id]).name
+      @order.address = Address.find(params[:order][:address_id]).address
+      @order.post_number = Address.find(params[:order][:address_id]).post_number
     else
       render :new
 # 既存のデータを使っていますのでありえないですが、万が一データが足りない場合は new を render します
@@ -86,6 +87,6 @@ end
   end
 
   def address_params
-    params.require(:order).permit(:name, :address)
+    params.require(:order).permit(:name, :address,:post_number)
   end
 end
