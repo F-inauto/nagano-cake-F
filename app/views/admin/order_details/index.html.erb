@@ -11,6 +11,18 @@
   </thead>
   <tbody>
     <% @order_details.each do |order_detail| %>
+    <tr>
+      <td><%= order_detail.item_id.name %></td>
+      <td><%= order_detail.price %></td>
+      <td><%= order_detail.amount %></td>
+      <td><%= order_detail.price * amount %></td>
+      <td>
+          <%= form_with(model: order_detail , url:  admin_order_ditails_path, method: :patch, local: true) do |f| %>
+          <%= f.select :,making_status, Order_details.making_statuses.keys, class: "order_status" %>
+          <%= f.submit "更新" , class: "btn btn-success" %>
+          <% end %>
+      </td>
+    </tr>
     <% end %>
   </tbody>
 </table>
