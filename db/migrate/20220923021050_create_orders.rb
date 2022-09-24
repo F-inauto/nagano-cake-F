@@ -5,7 +5,6 @@ class CreateOrders < ActiveRecord::Migration[6.1]
       t.string :post_number
       t.string :address
       t.string :name
-      t.integer :quantity
       t.integer :shipping_cost
       t.integer :total_payment
       # enum用のinteger型のpayment_methodカラムを追加

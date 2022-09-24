@@ -84,7 +84,7 @@ end
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_number, :address, :name, :item_id)
+    params.require(:order).permit(:payment_method, :post_number, :address, :name, :item_id, :total_payment)
   end
 
   def address_params
