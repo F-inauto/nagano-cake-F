@@ -69,6 +69,7 @@ def create # Order に情報を保存します
       order_detail.price = cart_item.item.with_tax_price
       order_detail.quantity = cart_item.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
+      order.total_payment = cart_item.quantity
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order_detail.save
     end
