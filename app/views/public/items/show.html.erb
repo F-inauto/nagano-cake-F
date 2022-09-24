@@ -4,8 +4,8 @@
       <!--部分テンプレート-->
       <%= render 'public/items/genre_search', genres: @genres %>
     </div>
-
-    <div class='col-md-8 offset-md-3'>
+    
+       <div class="col-3 offset-2 mr-3 my-5">
       <!--画像-->
       <%= image_tag @item.get_item_image, size: "200x200" %>
       <thead>
@@ -14,13 +14,14 @@
 
           <!--商品名-->
           <h2><%= @item.name %></h2>
-          <p><%= @item.introduction %></p>
+          <%= @item.introduction %>
+           <div class="font-weight-bold mt-3 text-nowrap">
           <h3>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</h3>
         </tr>
       </thead>
     <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
-
-      <%= f.label "個数選択" %>
+    
+      <%= f.label "個数選択" , class: "mx-4 my-4"%>
       <%= f.hidden_field :item_id, :value => @item.id %>
       <!--<= f.select :quantity, [['いち',1], ['に',2], ['さん',3] %>-->
       <!--<= f.select :quantity,*[1..3] %>-->
