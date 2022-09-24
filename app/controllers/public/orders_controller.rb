@@ -4,7 +4,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_customer.orders.all
   end
 
   def show
@@ -57,19 +57,19 @@ def create # Order に情報を保存します
 # 渡ってきた値を @order に入れます
   if @order.save
 # ここに至るまでの間にチェックは済ませていますが、念の為IF文で分岐させています
-    cart_items.each do |cart|
+    cart_items.each do |cart_item|
 # 取り出したカートアイテムの数繰り返します
 # order_item にも一緒にデータを保存する必要があるのでここで保存します
-      order_item = OrderItem.new
-      order_item.item_id = cart.item_id
-      order_item.order_id = @order.id
-      order_item.order_quantity = cart.quantity
+      order = Order.new
+      order.customer_id = cart_item.customer_id
+      order.customer_id = @order.id
+      order.total_payment = cart_item.quantity
 # 購入が完了したらカート情報は削除するのでこちらに保存します
-      order_item.order_price = cart.item.price
+      order.total_payment = cart_item.quantity
 # カート情報を削除するので item との紐付けが切れる前に保存します
-      order_item.save
+      order.save
     end
-    redirect_to order_complete_path
+    redirect_to orders_path
     cart_items.destroy_all
 # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
   else
