@@ -1,6 +1,6 @@
 class Admin::OrdersController < ApplicationController
   def index
-    @orders = Order.page(params[:page]).per(10)
+    @orders = Order.all.page(params[:page]).per(10)
     # @orders = Customer.find(params[:id])
     # @order = Order.find(params[:id])
   end
