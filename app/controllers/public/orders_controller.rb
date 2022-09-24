@@ -42,7 +42,7 @@ class Public::OrdersController < ApplicationController
 # ここに渡ってくるデータはユーザーで新規追加してもらうので、入力不足の場合は new に戻します
     end
   else
-    redirect_to 遷移したいページ # ありえないですが、万が一当てはまらないデータが渡ってきた場合の処理です
+    redirect_to order_order_confirm_path(current_customer) # ありえないですが、万が一当てはまらないデータが渡ってきた場合の処理です
   end
   @cart_items = current_customer.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
   @sum = 0
@@ -69,7 +69,7 @@ def create # Order に情報を保存します
 # カート情報を削除するので item との紐付けが切れる前に保存します
       order_item.save
     end
-    redirect_to 遷移したいページのパス
+    redirect_to order_complete_path
     cart_items.destroy_all
 # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
   else

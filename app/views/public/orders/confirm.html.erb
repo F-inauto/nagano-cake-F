@@ -1,20 +1,45 @@
-<!-- ユーザーに確認してもらうための表示です -->
-<% @cart_items.each do |cart_item| %>
-  <%= cart_item.item.name %> <!-- 商品名 -->
-  <%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 -->
-  <%= cart_item.quantity %> <!-- 個数 -->
-  <%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 -->
-  <% @sum += cart_item.subtotal %>
-<% end %>
-<p>ご請求金額</p>
-<%= @sum.to_s(:delimited) %> <!-- お買い物の合計金額 -->
-<p>お届け先</p>
-<%= @order.address %>
+<div class="container">
+  <div class="row">
+    <div class="col-mg-8">
+      <table>
+        <thead>
+          <th>商品名</th>
+          <th>単価（税込）</th>
+          <th>数量</th>
+          <th>小計</th>
+        </thead>
+        <tbody>
+          <!-- ユーザーに確認してもらうための表示です -->
+          <% @cart_items.each do |cart_item| %>
+            <th><%= cart_item.item.name %></th><!-- 商品名 -->
+            <th><%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 --></th>
+            <th><%= cart_item.quantity %> <!-- 個数 --></th>
+            <th><%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 --></th>
+            <% @sum += cart_item.subtotal %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+        <p>送料</p>
+        1000
+        <p>合計金額</p>
+        <%= @sum.to_s(:delimited) %> <!-- お買い物の合計金額 -->
+        <p>請求金額</p>
+        <%= @sum + 1000 %>
 
-<!-- ユーザーには注文確定ボタンだけ表示します -->
-<%= form_with model: @order, url: orders_path, method: :post , local: true do |f| %>
-  <%= f.hidden_field :name %>
-  <%= f.hidden_field :address %>
-  <%= f.hidden_field :total_price, value: @total %>
-  <%= f.submit "注文を確定する" %>
-<% end %>
+    <th>支払方法</th>
+
+    <p>お届け先</p>
+    <%= @order.post_number %>
+    <%= @order.address %>
+    <%= @order.name%>
+
+    <!-- ユーザーには注文確定ボタンだけ表示します -->
+    <%= form_with model: @order, url: orders_path, method: :post , local: true do |f| %>
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :total_price, value: @total %>
+      <%= f.submit "注文を確定する" %>
+    <% end %>
+  </div>
+</div>
