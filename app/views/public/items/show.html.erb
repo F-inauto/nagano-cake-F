@@ -13,15 +13,18 @@
           <th></th>
           
           <!--商品名-->
-          <p class="h3"><span class ="bg-light font-weight-bold"><h2><%= @item.name %></h2></p></span>
-          <p class="h5"><%= @item.introduction %></p><br>
+       <h1 class="display-5 fw-bolder"><%= @item.name %></h1>
+         <p class="h5"><%= @item.introduction %></p><br>
            <div class="font-weight-bold mt-3 text-nowrap">
-          <h3>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</h3>
-        </tr>
+         <h3>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</h3>
+       </tr>
       </thead>
     <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
     
-      <%= f.label "個数選択" , class: "mx-4 my-4"%>
+    <button type="button" class="btn btn-outline-white ml-3" data-toggle="modal" data-target="#forLogin">
+      <i class="fas fa-shopping-cart"></i> 
+       <%= f.label "個数選択",class: "btn btn-outline-dark ml-3"%>
+         <i class="fas fa-shopping-cart"></i>cart
       <%= f.hidden_field :item_id, :value => @item.id %>
       <!--<= f.select :quantity, [['いち',1], ['に',2], ['さん',3] %>-->
       <!--<= f.select :quantity,*[1..3] %>-->
