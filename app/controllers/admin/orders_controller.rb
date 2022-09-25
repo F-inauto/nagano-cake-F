@@ -29,6 +29,7 @@ class Admin::OrdersController < ApplicationController
       #製作完了→発送準備
       # @order.update_all(order_status: 3) if @order.order_details.making_status == "complete"
       redirect_to admin_order_path(@order.id)
+
     else
       redirect_to admin_order_path(@order.id)
     end
