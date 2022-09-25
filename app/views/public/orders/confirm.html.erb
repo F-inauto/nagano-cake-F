@@ -1,13 +1,12 @@
-<div class="container">
-  <div class="row">
-    <h4 class="p-3"><span class="col-md-3 bg-light text-center m-4">注文情報確認</span></h4>
-  </div>
+<div class = "row h5">
+  <div class = "col-1"></div>
+  <div>注文情報確認</div>
 </div>
+<div class = "row">
+  <div class = "col-9">
+     <table class="mx-auto w-auto table-hover">
+      <thead class = "table-secondary table-bordered">
 
-  <div class="row">
-    <div class="col-md-1"></div>
-      <div class="col-md-6">
-        <table class="table table-bordered">
       <table>
         <thead>
            <tr>
@@ -16,14 +15,17 @@
             <th class="table-light"><h5 class=p-2>数量</h5></th>
             <th class="table-light"><h5 class=p-2>小計</h5></th>
           </tr>
+          </tr>
         </thead>
+
+       <tbody>
           <% @cart_items.each do |cart_item| %>
-        <tbody>
+          <tr class = "table-bordered">
           <!-- ユーザーに確認してもらうための表示です -->
-            <th><%= cart_item.item.name %></th><!-- 商品名 -->
-            <th><%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 --></th>
-            <th><%= cart_item.quantity %> <!-- 個数 --></th>
-            <th><%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 --></th>
+             <th class = "p-2"><%= cart_item.item.name %></th><!-- 商品名 -->
+             <th class = "p-2"><%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 --></th>
+             <th class = "p-2"><%= cart_item.quantity %> <!-- 個数 --></th>
+             <th class = "p-2"><%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 --></th>
             <% @sum += cart_item.subtotal %>
         </tbody>
           <% end %>
@@ -31,19 +33,21 @@
     </div>
   </div>
 </div>
-<div class="col-md-3">
-  <table class="table table-bordered">
+
+<div class = "col-1"></div>
+  <div class = "col-2">
+    <table class = "mx-auto w-auto table table-bordered border-dark">
     <table>
       <tr>
-        <td class="table-light"><h5 class=p-2>送料</h5></td>
-        <td class="table-light"><h5 class=p-2>1000</h5></td>
+        <td class = "table-secondary">送料</td>
+        <td>1000</td>
       </tr>
       <tr>
-        <td class="table-light"><h5 class=p-2>合計金額</h5></td>
+        <td class = "table-secondary">合計金額</td>
         <th><%= @sum.to_s(:delimited) %> <!-- お買い物の合計金額 --></th>
       </tr>
       <tr>
-        <td class="table-light"><h5 class=p-2>請求金額</h5></td>
+        <td class = "table-secondary">請求金額</td>
         <th><%= @sum + 1000 %></th>
       </tr>
      </table>
@@ -51,24 +55,25 @@
   </div>
 
 
-   <div class="container">
-    <div class="row">
-     <h5><span class="header">支払い方法</span></h5>
-      <div class="col">
+      <tr>
+          <td colspan = "5">　</td>
+        </tr>
+        <tr>
+          <td class = "px-3 h4">支払方法
+          </td>
+          <td colspan = "4">
         <%= @order.payment_method %>
-        </div>
-    </div>
+        </td>
+      </tr>
 
-    <br>
-    <div class="row">
-     <h5><span class="header">お届け先</span></h5>
-      <div class="col">
-        〒<%= @order.post_number %></br>
+
+        <tr>
+    　　<td class ="px-3 h4">お届け先</td>
+        〒<%= @order.post_number %>
         <%= @order.address %>
-        <br>
         <%= @order.name%>
-      </div>
-     </div>
+      </tr>
+
 
 
 
@@ -81,7 +86,7 @@
       <%= f.hidden_field :address %>
       <%= f.hidden_field :post_number %>
       <%= f.hidden_field :total_payment, value: @sum + 1000 %>
-      <%= f.submit "注文を確定する",class:'btn btn-primary' %>
+      <%= f.submit "注文を確定する",class: "btn btn-primary p-3 mx-auto w-auto d-block" %>
       </div>
     </div>
   <% end %>
