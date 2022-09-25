@@ -1,9 +1,10 @@
-<h3>注文履歴一覧</h3>
 
-<div class="container">
-  <div class="row">
-    <div class="col-xs-10">
-      <table>
+
+<div class='container'>
+  <h3>注文履歴一覧</h3>
+  <div class ='row'>
+    <div class = "border table-striped table table-hover">
+      <table class = "col-md-12">
           <thead>
             <tr>
               <th>購入日時</th>
@@ -26,7 +27,7 @@
               <td>
                 <% @amount_sum = 0 %>
                 <% order.order_details.each do |detail| %>
-                <@= amount_sum += detail_amount %>
+                <% @amount_sum += detail.quantity %>
                 <% end %>
                 <!--出力-->
                 <%= @amount_sum %>
@@ -38,7 +39,7 @@
           </tbody>
       </table>
     </div>
-    <div class='col-xs-3'>
+    <div>
        <!--ページネーション必要（３P毎表記）-->
        <%= paginate @orders %>
     </div>

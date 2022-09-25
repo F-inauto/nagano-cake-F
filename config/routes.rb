@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     resources :genres
     resources :customers
     resources :orders
-    resources :order_ditails
+    resources :order_details
   end
 
   scope module: :public do
