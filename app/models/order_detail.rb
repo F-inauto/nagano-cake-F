@@ -3,7 +3,7 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
 
   #製作ステータスのenum
-  enum making_status: { "impossible_making": 0, "waiting_for_making": 1, "making": 2, "complete": 3 }
+  enum making_status: { impossible_making: 0, waiting_for_making: 1, making: 2, complete: 3 }
 
   def with_tax_price
       (price * 1.1).floor
