@@ -14,13 +14,13 @@
       <tbody>
         <% order.order_details.each do |order_detail| %>
         <tr>
-          <td><%= order_detail.item_id.name %></td>
+          <td><%= order_detail.item.name %></td>
           <td><%= order_detail.price %></td>
-          <td><%= order_detail.amount %></td>
-          <td><%= order_detail.price * amount %></td>
+          <td><%= order_detail.quantity %></td>
+          <td><%= order_detail.price * order_detail.quantity %></td>
           <td>
               <%= form_with(model: order_detail , url:  admin_order_ditails_path, method: :patch, local: true) do |f| %>
-              <%= f.select :,making_status, Order_details.making_statuses.keys, class: "order_status" %>
+              <%= f.select :making_status, OrderDetail.making_statuses.keys, class: "order_status" %>
               <%= f.submit "更新" , class: "btn btn-success" %>
               <% end %>
           </td>
@@ -46,21 +46,3 @@
     </table>
   </div>
 </div>
-<table>
-  <tbody>
-    <tr>
-      <th>商品合計</th>
-      <td><%= 確認 %></td>
-    </tr>
-    <tr>
-      <th>送料</th>
-      <td><%= @order.shipping_cost %></td>
-    </tr>
-    <tr>
-      <th>請求金額合計</th>
-      <td><%= @order.total_payment %></td>
-    </tr>
-  </tbody>
-
-</table>
-
