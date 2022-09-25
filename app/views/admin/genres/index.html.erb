@@ -1,34 +1,59 @@
 <div class="container">
   <div class="row">
-    <h5 class="p-4"><span class="col-md-3 bg-light text-center m-4">ジャンル一覧・追加</span></h5>
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">ジャンル一覧・追加</h3>
+
+      <%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
+
+      <div class="text-center my-4 mt-5">
+            <td><%= f.label :"ジャンル名", class: "mr-3" %></td>
+            <td><%= f.text_field :name, class: "mr-5" %></td>
+            <!--<td><= f.submit'新規登録',class: 'btn btn-success' ></td>-->
+            <td><%= f.submit'新規登録',class: "btn btn-primary" %></td>
+          </div>
+
+      <% end %>
+
+      <div class="text-center my-4 mt-5">
+        <table class="table table-hover">
+          <thead>
+            <th>ジャンル</th>
+          </thead>
+        <% @genres.each do |genre| %>
+          <td><%= genre.name %></td>
+          <td><%= link_to "編集する", edit_admin_genre_path(genre.id), class: "btn btn-success" %></td>
+        </tbody>
+        <%end%>
+      </div>
+    </div>
   </div>
+</dvi>
 
-<%=form_with model: @genre,url: admin_genres_path, method: :post do |f| %>
 
-<table class="table">
- <table>
-    <tr><th>ジャンル名</th><td><%= f.text_field :name %></td><td><%= f.submit'新規登録',class: 'btn btn-primary' %></td></tr>
- </table>
-<%end%>
+<!--<table class="table">-->
+<!-- <table>-->
+<!--    <tr><th>ジャンル名</th><td><= f.text_field :name ></td><td><= f.submit'新規登録',class: 'btn btn-primary' ></td></tr>-->
+<!-- </table>-->
+<!--< end >-->
 
-<div class="container">
-  <div class="row">
-    <div class="col-md-6">
-      <table class="table table-hover table-inverse">
- <table>
-    <thead>
-      <tr>
-        <table class="table-striped table table-hover">
-        <thead class="thead-light">
-        <th>ジャンル</th>
-      </tr>
-    </thead>
-  <%@genres.each do |genre|%>
-    <tbody>
-      <tr>
-        <td><%=genre.name%></td>
-        <td><%=link_to"編集する",edit_admin_genre_path(genre.id),class: 'btn btn-success'%></td>
-      </tr>
-    </tbody>
-  <%end%>
-</table>
+<!--<div class="container">-->
+<!--  <div class="row">-->
+<!--    <div class="col-md-6">-->
+<!--      <table class="table table-hover table-inverse">-->
+<!-- <table>-->
+<!--    <thead>-->
+<!--      <tr>-->
+<!--        <table class="table-striped table table-hover">-->
+<!--        <thead class="thead-light">-->
+<!--        <th>ジャンル</th>-->
+<!--      </tr>-->
+<!--    </thead>-->
+<!--  < @genres.each do |genre| >-->
+<!--    <tbody>-->
+<!--      <tr>-->
+<!--        <td>< =genre.name ></td>-->
+<!--        <td>< =link_to"編集する",edit_admin_genre_path(genre.id),class: 'btn btn-success' ></td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<!--  < end >-->
+<!--</table>-->
