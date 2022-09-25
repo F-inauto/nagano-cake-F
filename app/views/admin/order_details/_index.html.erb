@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @order.order_details.each do |order_detail| %>
+        <% order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item_id.name %></td>
           <td><%= order_detail.price %></td>
@@ -33,7 +33,7 @@
     <table class = "table-striped table table-hover">
       <tr>
         <th>商品合計</th>
-        <th><%= @order.total_payment - 1000 %></th>
+        <th><%= order.total_payment - 1000 %></th>
       </tr>
       <tr>
         <th>送料</th>
@@ -41,7 +41,7 @@
       </tr>
       <tr>
         <th>請求金額合計</th>
-        <th><%= @order.total_payment %></th>
+        <th><%= order.total_payment %></th>
       </tr>
     </table>
   </div>
