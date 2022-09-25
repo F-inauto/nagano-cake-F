@@ -58,7 +58,6 @@
         〒<%= @order.post_number %>
         <%= @order.address %>
         <%= @order.name%>
-
       </th>
     </tr>
   </div>
@@ -70,6 +69,7 @@
     <%= form_with model: @order, url: orders_path, method: :post , local: true do |f| %>
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
+      <%= f.hidden_field :post_number %>
       <%= f.hidden_field :total_payment, value: @sum + 1000 %>
       <%= f.submit "注文を確定する" %>
     <% end %>
