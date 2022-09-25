@@ -115,16 +115,6 @@ ActiveRecord::Schema.define(version: 2022_09_24_090927) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "order_ditails", force: :cascade do |t|
-    t.integer "order_id"
-    t.integer "item_id"
-    t.integer "price"
-    t.integer "quantity", null: false
-    t.integer "making_status", default: 0, null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-  end
-
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
     t.string "post_number"
