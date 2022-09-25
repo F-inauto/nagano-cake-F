@@ -1,12 +1,10 @@
-<div class="container">
-  <div class="row">
-   <div class="col-3-md offset-1 mt-5">
-     <h2 class="mb-4">新規会員登録</h2>
-    </div>
-  </div>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-8 offset-2'>
+      <h3 class="my-4 mt-5">新規登録</h3>
 
-  <%= form_with model: @customer, url: customer_registration_path do |f| %>
-    <%= render "public/shared/error_messages", resource: resource %>
+      <%= form_with model: @customer, url: customer_registration_path do |f| %>
+      <%= render "public/shared/error_messages", resource: resource %>
 
     <table class="table table-borderless table-sm">
       <div class="field">
@@ -81,9 +79,8 @@
     </table>
   <% end %>
 
-    <div class="col-3-md offset-7">
-    <h4>既に登録済みの方</h4>
-      <div class="col-3-md offset-1">
+    <h4 class="text-right">既に登録済みの方</h4>
+      <div class="text-right">
         <%= link_to "こちら", new_customer_session_path %>からログインしてください。
       </div>
     </div>
