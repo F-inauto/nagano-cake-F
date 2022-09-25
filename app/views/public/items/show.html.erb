@@ -5,6 +5,7 @@
       <%= render 'public/items/genre_search', genres: @genres %>
     </div>
 
+
     <div class="col-2 ml-3">
       <!--画像-->
       <%= image_tag @item.get_item_image, size: "200x200" %>
@@ -20,6 +21,7 @@
      <h4>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</h4>
     </div>
 
+
     <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
 
     <button type="button" class="btn btn-outline-white ml-3" data-toggle="modal" data-target="#forLogin">
@@ -27,6 +29,7 @@
         <%= f.label :"個数選択",class: "ml-3" %>
         <!--<= f.label "個数選択",class: "btn btn-outline-dark ml-3">-->
         <!--<i class="fas fa-shopping-cart"></i>cart-->
+
       <%= f.hidden_field :item_id, :value => @item.id %>
       <!--<= f.select :quantity, [['いち',1], ['に',2], ['さん',3] %>-->
       <!--<= f.select :quantity,*[1..3] %>-->
