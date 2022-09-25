@@ -1,13 +1,14 @@
-<table class="table-striped table table-hover">
-  <thead class="thead-light">
+<table class="table table-hover">
+  <!--<thead class="thead-light">-->
+  <thead>
     <tr>
-      <th>ジャンル検索</th>
+      <th class= "text-center" >ジャンル検索</th>
     </tr>
   </thead>
   <tbody>
     <% genres.each do |genre| %>
     <tr>
-      <th><%= link_to genre.name, items_path(genre_id: genre.id) %></th>
+      <th class= "text-center" ><%= link_to genre.name, items_path(genre_id: genre.id) %></th>
     </tr>
     <% end %>
   </tbody>
