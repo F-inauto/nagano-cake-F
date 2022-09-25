@@ -71,6 +71,7 @@
      </div>
 
 
+
     <!-- ユーザーには注文確定ボタンだけ表示します -->
     <%= form_with model: @order, url: orders_path, method: :post , local: true do |f| %>
       <div class="row">
@@ -78,6 +79,7 @@
       <div class="col-md-5">
       <%= f.hidden_field :name %>
       <%= f.hidden_field :address %>
+      <%= f.hidden_field :post_number %>
       <%= f.hidden_field :total_payment, value: @sum + 1000 %>
       <%= f.submit "注文を確定する",class:'btn btn-primary' %>
       </div>
