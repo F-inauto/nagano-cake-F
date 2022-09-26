@@ -16,7 +16,7 @@
           <% @customers.each do |user| %>
             <tr>
               <td>
-                  <%= user.id %>
+                <%= user.id %>
               </td>
               <td>
               <%= link_to admin_customer_path(user) do%>
@@ -25,13 +25,13 @@
               </td>
               <td><%= user.email%></td>
               <% if user.is_valid == '有効'  %>
-          	    <td class = "text-success">
+          	    <th class = "text-success">
           	      <%= user.is_valid %>
-          	    </td>
+          	    </th>
           	  <%else%>
-          	    <td class = "text-danger">
+          	    <th class = "text-danger">
           	      <%= user.is_valid %>
-          	    </td>
+          	    </th>
           	  <% end %>
             </tr>
           <% end %>
