@@ -21,6 +21,7 @@
       <h4 class="text-center"><strong>¥<%= @item.with_tax_price.to_s(:dalimited) %>(税込)</strong></h4>
       <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
       <br>
+
       <p class="text-center">
         <strong>
           <button type="button" class="btn btn-outline-white ml-3" data-toggle="modal" data-target="#forLogin">

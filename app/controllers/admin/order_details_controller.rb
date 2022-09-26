@@ -1,16 +1,20 @@
 class Admin::OrderDetailsController < ApplicationController
 
   def update
-    @order_details = OrderDetais.find(params[:id])
-    if @order_details.update(order_details_params) &&  @order_details.making_status == "making"
+    @order_detail = OrderDetail.find(params[:id])
+    @order_detail.update(order_details_params)
+    @order = @order_detail.order
+
+    if @order_detail.making_status == "making"
       #製作ステータス製作中→製作中
-      @order_details.order.update_all(order_status: 2)
-      redirect_to admin_order_path(@order_details.id)
-    elsif @order_details.update(order_details_params) && @order_details.making_status == "complete"
-      @order_details.order.update_all(order_status: 3)
-      redirect_to admin_order_path(@order_details.id)
+      @order.update(order_status: 2)
+      redirect_to admin_order_path(@order.id)
+    elsif @order.order_details.count == @order.order_details.where(making_status: "complete").count
+
+      @order.update(order_status: 3)
+      redirect_to admin_order_path(@order.id)
     else
-      render 'index'
+      redirect_to admin_order_path(@order.id)
     end
   end
 
