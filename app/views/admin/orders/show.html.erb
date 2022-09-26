@@ -5,7 +5,11 @@
   <tbody>
     <tr>
       <th>購入者</th>
-      <td><%= link_to @order.name , admin_customer_path(@order.customer_id) %></td>
+      <td>
+        <%= link_to admin_customer_path(@order.customer_id)  do %>
+          <%= @order.customer.last_name %><%= @order.customer.first_name %>
+        <% end %>
+      </td>
     </tr>
     <tr>
       <th>注文日</th>
