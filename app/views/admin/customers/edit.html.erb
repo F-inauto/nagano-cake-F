@@ -1,8 +1,10 @@
 <div class="container">
-  <h3><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
   <div class="row">
-    <%= form_with model: @customer,url: admin_customer_path, method: :patch, local:true do |f| %>
-      <table class='table'>
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5"><%= @customer.last_name %><%= @customer.first_name %>さんの会員情報編集</h3>
+
+      <%= form_with model: @customer,url: admin_customer_path, method: :patch, local:true do |f| %>
+      <table class='table table-hover'>
     	  <th>会員ID</th>
     	  <th><%= @customer.id %></th>
             <tr class="form-group">
@@ -47,6 +49,7 @@
             <th><%= f.submit "変更する", class: 'btn btn-success' %></th>
           </tr>
       </table>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -1,9 +1,12 @@
-<div class ="container">
-<h3>注文履歴詳細</h3>
+<div class="container">
+  <!--<div class="row">-->
+  <!--  <div class="col-md-8 offset-2">-->
+  <h3 class="my-4 mt-5">注文履歴詳細</h3>
+
   <div class="row">
     <div class = "col-md-8" >
-      <table class=" border table-striped table table-hover">
-        <tr>注文情報</tr>
+      <table class="border table">
+        <p class="text-center"><strong>注文情報</strong></p>
         <tr>
           <th class="border col-md-2" >注文日</th>
           <th><%= @order.created_at.strftime('%Y/%m/%d') %></th>
@@ -27,8 +30,8 @@
       </table>
     </div>
     <div class = "col-md-3">
-      <table class="border table-striped table table-hover">
-        <p>請求情報</p>
+      <table class="border table">
+        <p class="text-center"><strong>請求情報</strong></p>
         <tr>
           <th class = "border" >商品合計</th>
           <th><%= (@order.total_payment - 1000).to_s(:delimited) %></th>
@@ -44,9 +47,9 @@
       </table>
     </div>
   </div>
-  <tr>注文内容</tr>
+  <p class="text-center"><strong>注文内容</strong></p>
   <div class= "row">
-    <table class="table-striped table table-hover">
+    <table class="border table">
       <thead class = "thead-light">
           <th class = "border col-md-6">商品</th>
           <th class = "border col-md-2">単価（税込）</th>
@@ -74,5 +77,5 @@
       </tbody>
     </table>
   </div>
-  </div>
 </div>
+
