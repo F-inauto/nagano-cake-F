@@ -1,0 +1,93 @@
+<div class = "row h5">
+  <div class = "col-1"></div>
+  <div>注文情報確認</div>
+</div>
+<div class = "row">
+  <div class = "col-9">
+     <table class="mx-auto w-auto table-hover">
+      <thead class = "table-secondary table-bordered">
+
+      <table>
+        <thead>
+           <tr>
+            <th class="table-light"><h5 class=p-2>商品名</h5></th>
+            <th class="table-light"><h5 class=p-2>単価(税込)</h5></th>
+            <th class="table-light"><h5 class=p-2>数量</h5></th>
+            <th class="table-light"><h5 class=p-2>小計</h5></th>
+          </tr>
+          </tr>
+        </thead>
+
+       <tbody>
+          <% @cart_items.each do |cart_item| %>
+          <tr class = "table-bordered">
+          <!-- ユーザーに確認してもらうための表示です -->
+             <th class = "p-2"><%= cart_item.item.name %></th><!-- 商品名 -->
+             <th class = "p-2"><%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 --></th>
+             <th class = "p-2"><%= cart_item.quantity %> <!-- 個数 --></th>
+             <th class = "p-2"><%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 --></th>
+            <% @sum += cart_item.subtotal %>
+        </tbody>
+          <% end %>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class = "col-1"></div>
+  <div class = "col-2">
+    <table class = "mx-auto w-auto table table-bordered border-dark">
+    <table>
+      <tr>
+        <td class = "table-secondary">送料</td>
+        <td>1000</td>
+      </tr>
+      <tr>
+        <td class = "table-secondary">合計金額</td>
+        <th><%= @sum.to_s(:delimited) %> <!-- お買い物の合計金額 --></th>
+      </tr>
+      <tr>
+        <td class = "table-secondary">請求金額</td>
+        <th><%= @sum + 1000 %></th>
+      </tr>
+     </table>
+  　</div>
+  </div>
+
+
+      <tr>
+          <td colspan = "5">　</td>
+        </tr>
+        <tr>
+          <td class = "px-3 h4">支払方法
+          </td>
+          <td colspan = "4">
+        <%= @order.payment_method %>
+        </td>
+      </tr>
+
+
+        <tr>
+    　　<td class ="px-3 h4">お届け先</td>
+        〒<%= @order.post_number %>
+        <%= @order.address %>
+        <%= @order.name%>
+      </tr>
+
+
+
+
+    <!-- ユーザーには注文確定ボタンだけ表示します -->
+    <%= form_with model: @order, url: orders_path, method: :post , local: true do |f| %>
+      <div class="row">
+      <div class="col-md-5"></div>
+      <div class="col-md-5">
+      <%= f.hidden_field :name %>
+      <%= f.hidden_field :address %>
+      <%= f.hidden_field :post_number %>
+      <%= f.hidden_field :total_payment, value: @sum + 1000 %>
+      <%= f.submit "注文を確定する",class: "btn btn-primary p-3 mx-auto w-auto d-block" %>
+      </div>
+    </div>
+  <% end %>
+</div>

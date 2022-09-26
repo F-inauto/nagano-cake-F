@@ -3,17 +3,27 @@ class Item < ApplicationRecord
   #↓以下associationの記載↓
   belongs_to :genre
   has_many :cart_items, dependent: :destroy
+  has_one_attached :item_image
 
   #↓以下Validationの記載↓
   validates :genre_id, presence: true
   validates :name, presence: true
-  validates :image, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
-  #booleanの場合↓要確認
-  validates :completed, inclusion: { in: [true, false] }
-  #enumの定義↓要確認
-  enum is_active: { 販売中: 0, 販売停止中: 1 }
+  has_many :order_items
 
+
+
+  def get_item_image
+    (item_image.attached?) ? item_image : "no_image.jpg"
+  end
+
+
+
+  def with_tax_price
+      (price * 1.1).floor
+  end
+  
+  
 
 end

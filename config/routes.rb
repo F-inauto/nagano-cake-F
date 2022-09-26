@@ -6,19 +6,26 @@ Rails.application.routes.draw do
     resources :genres
     resources :customers
     resources :orders
-    resources :order_ditails
+    resources :order_details
   end
 
   scope module: :public do
     root to: 'homes#top'
     get '/about' => "homes#about"
     resources :addresses
-    resources :orders
-    resources :cart_items
+    resources :orders do
+      post 'order/confirm' => 'orders#confirm'
+      get 'orders/complete' => 'orders#complete'
+    end
+    resources :cart_items, only: [:index, :create, :update, :destroy] do
+      delete 'cart_items/all_destroy' => 'cart_items#all_destroy'
+    end
     resources :items
     get 'customers/mypage' => 'customers#show'
     get 'customers/mypage/edit' => 'customers#edit'
-    get 'customers/unsubscribe' => 'customers#unsubscribe'
+    patch 'customers/mypage' =>  'customers#update'
+    get 'customers/unsubscribe' => 'customers#unsubscribe', as: 'unsubscribe'
+    patch 'customers/withdrawal' => 'customers#withdrawal', as: 'withdrawal'
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

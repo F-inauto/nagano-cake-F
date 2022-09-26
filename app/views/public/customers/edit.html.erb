@@ -1,2 +1,39 @@
-<h1>Public::Customers#edit</h1>
-<p>Find me in app/views/public/customers/edit.html.erb</p>
+<div class="container">
+  <h3>会員情報編集</h3>
+  <div class="row">
+    <%= form_with model: @customer,url: customers_mypage_path, method: :patch, local:true do |f| %>
+      <table class='table'>
+          <tr class="form-group">
+            <th><%= f.label :"氏名"%></th>
+            <th><%= f.text_field :last_name,autofocus: true ,class: "form-control last_name" %></th>
+            <th><%= f.text_field :first_name,autofocus: true ,class: "form-control first_name" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"フリガナ"%></th>
+            <th><%= f.text_field :last_name_kana,autofocus: true, class: "form-control last_name_kana" %></th>
+            <th><%= f.text_field :first_name_kana,autofocus: true, class: "form-control first_name_kana" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"郵便番号"%></th>
+            <th><%= f.text_area :post_number,autofocus: true, class: "form-control customer.post_number" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"住所"%></th>
+            <th><%= f.text_area :address,autofocus: true, class: "form-control customer.address" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"電話番号"%></th>
+            <th><%= f.text_area :phone_number,autofocus: true, class: "form-control customer.phone_number" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.label :"メールアドレス"%></th>
+            <th><%= f.email_field :email,autofocus: true, class: "form-control customer.email" %></th>
+          </tr>
+          <tr class="form-group">
+            <th><%= f.submit "編集内容を保存", class: 'btn btn-success' %></th>
+            <th><%= link_to "退会する" , unsubscribe_path(current_customer), class: 'btn btn-danger' %></th>
+          </tr>
+      </table>
+    <% end %>
+  </div>
+</div>

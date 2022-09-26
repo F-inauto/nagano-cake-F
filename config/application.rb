@@ -13,6 +13,9 @@ module NaganoCakeF
 
     #enumの内容日本語表記
     config.i18n.default_locale = :ja
+    
+    #タイムゾーンを日本時間に設定
+    config.time_zone = 'Asia/Tokyo'
 
     # Configuration for the application, engines, and railties goes here.
     #
