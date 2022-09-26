@@ -4,46 +4,25 @@
       <!--部分テンプレート-->
     <%= render "public/items/genre_search", genres: @genres %>
     </div>
+    <div class="col-8 ml-2">
+      <!--countメソッドの使い方-->
+      <h3 class="mb-4">商品一覧(全<%= @items.all.count %>件)</h3>
 
-  <div class="text-center">
-<!--countメソッドの使い方-->
-<h2>商品一覧(全<%= @items.all.count %>件)</h2>
-<!--商品一覧-->
-       <div class="text-center">
-        <div class="col-10">
-          <div class="row">
-<% @items.each do |item| %>
-<table>
-  <tr>
-    <th>
-      <div class="float-sm-right">
-      <div class="container">
-       <div class="row">
-      <div class="color">
-        <div class="text-right">
-      <%= link_to item_path(item) , class: "col-3 text-center text-dark text-nowrap mt-5" do %>
-      <%= image_tag item.get_item_image, size: "200x200" %>
-      <% end %>
-    </th>
-  </tr>
-  <tr>
-    <th>
-      <%= item.name %>
-    </th>
-  </tr>
-  <tr>
-    <th>
-      ¥<%= item.with_tax_price.to_s(:dalimited) %>
-  </tr>
-<% end %>
-</table>
+      <!--商品一覧-->
+      <div class="contents" style="display:flex; flex-wrap:wrap;">
+        <% @items.each do |item| %>
+          <div class="mr-4 mt-4">
+            <%= link_to item_path(item) do %>
+              <%= image_tag item.get_item_image, size:"200x120" %>
+            <% end %>
+            <p class="text-center"><strong><%= item.name %></strong></p>
+            <p class="text-center"><strong>￥<%= item.with_tax_price.to_s(:dalimited) %></strong></p>
+          </div>
+        <% end %>
+      </div>
+      <!--ページネーション加える-->
+      <p class="text-center"><strong> <%= paginate @items %></strong></p>
 
-  </div>
-   <div class="row">
-      <div class="center-block mx-auto"><br><br>
-
-<!--ページネーション加える-->
-<%= paginate @items %>
     </div>
   </div>
 </div>

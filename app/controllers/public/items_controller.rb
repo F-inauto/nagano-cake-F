@@ -5,10 +5,10 @@ class Public::ItemsController < ApplicationController
     #ジャンルIDあるとき
     if params[:genre_id]
       @genre = Genre.find(params[:genre_id])
-      @items = @genre.items.page(params[:page]).per(8)
+      @items = @genre.items.page(params[:page]).per(6)
     #ジャンルIDないとき
     else
-      @items = Item.all.page(params[:page]).per(8)
+      @items = Item.all.page(params[:page]).per(6)
     end
 
   end

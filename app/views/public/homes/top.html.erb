@@ -30,33 +30,19 @@
             </table>
           </div>
         </div>
-        <div class ="row">
-        <% @items.each do |item| %>
-          <table>
-            <tbody>
-              <tr>
-                <th>
-                  <div class="col-3">
-                  <%= link_to item_path(item) do %>
-                  <%= image_tag item.get_item_image, size: "200x200" %>
-                  <% end %>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  <%= item.name %>
-                </th>
-              </tr>
-              <tr>
-                <th>
-                  ¥<%= item.with_tax_price.to_s(:dalimited) %>
-                </th>
-              </tr>
-            </tbody>
-          </table>
-        <% end %>
+        <div class="contents" style="display:flex; flex-wrap:wrap;">
+          <% @items.each do |item| %>
+            <div class="mr-4 mt-4">
+              <%= link_to item_path(item) do %>
+                <%= image_tag item.get_item_image, size:"200x120" %>
+              <% end %>
+              <p class="text-center"><strong><%= item.name %></strong></p>
+              <p class="text-center"><strong>￥<%= item.with_tax_price.to_s(:dalimited) %></strong></p>
+            </div>
+          <% end %>
+        </div>
+        <p class="text-right"><strong><%= link_to "全ての商品を見る>",items_path %></strong></p>
       </div>
-      <%= link_to "全ての商品を見る>",items_path %>
     </div>
   </div>
 </div>
