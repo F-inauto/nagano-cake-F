@@ -12,7 +12,7 @@
       <!--商品詳細-->
       <div class="text-center">
         <br>
-        <table class="table table-hover">
+        <table class="table">
           <tr>
             <th>商品名</th>
             <td><%= @item.name %></td>
@@ -50,17 +50,14 @@
         </table>
       </div>
 
-      <table class="table table-hover">
-        <div>
-        <!--編集ボタン-->
-        <%= link_to "編集する", edit_admin_item_path(@item), class: 'btn btn-success' %>
-        </div>
-        <br>
-        <!--あとで削除-->
-        <div>
-        <%= link_to "削除する", admin_item_path(@item), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: 'btn btn-success' %>
-        </div>
-      </table>
+       <div class="text-center">
+        <table class="table">
+          <!--編集ボタン-->
+          <th><%= link_to "編集する", edit_admin_item_path(@item), class: 'btn btn-success' %></th>
+          <!--あとで削除-->
+          <th><%= link_to "削除する", admin_item_path(@item), method: :delete, data: {confirm:  "本当に削除しますか？"}, class: "btn btn-danger" %></th>
+        </table>
+      </div>
     </div>
   </div>
 </div>

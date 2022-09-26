@@ -3,13 +3,13 @@
     <div class="col-md-8 offset-2">
       <h3 class="my-4 mt-5">マイページ</h3>
 
-　　　<table class="table">
+　　　<table class="table table-hover">
         <thead>
           <th>登録情報</th>
           <th><%= link_to '編集する', customers_mypage_edit_path, class: "btn btn-sm btn-success" %></th>
         </thead>
       </table>
-      <table class='table'>
+      <table class='table table-hover'>
         <tr>
       	  <th>会員ID</th>
       	  <th><%= @customer.id %></th>
@@ -39,7 +39,7 @@
       	  <th><%= @customer.email %></th>
         </tr>
       </table>
-      <table class="table">
+      <table class="table table-hover">
         <thead>
           <th>配送先</th>
           <th><%= link_to '一覧を見る', addresses_path, class: "btn btn-sm btn-primary" %></th>
