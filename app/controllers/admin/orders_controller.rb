@@ -20,24 +20,19 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    if @order.order_status == "confirm_payment"
+    if @order.update(order_params) && @order.order_status == "confirm_payment"
        flash[:notice] = "注文ステータス更新"
-       #入金確認→製作ステータス：製作待@order.order_details.update_all(making_status: "waiting_for_making")
-       @order.order_details.each do |order_detail|
-         order_detail.update(making_status: "waiting_for_making")
-       end
-       #製作ステータス製作中→製作中
+       #入金確認→製作ステータス：製作待ち
+      @order.order_details.update_all(making_status: 1)
+       
       # @order.update_all(making_status: 2) if @order.order_details.order_status == "making"
       #製作完了→発送準備
       # @order.update_all(order_status: 3) if @order.order_details.making_status == "complete"
       redirect_to admin_order_path(@order.id)
-
     else
       redirect_to admin_order_path(@order.id)
     end
   end
-
 
 
 

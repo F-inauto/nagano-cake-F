@@ -23,7 +23,7 @@
           <tr class = "table-bordered">
           <!-- ユーザーに確認してもらうための表示です -->
              <th class = "p-2"><%= cart_item.item.name %></th><!-- 商品名 -->
-             <th class = "p-2"><%= (cart_item.item.with_tax_price).to_s(:delimited) %>　<!-- 金額 --></th>
+             <th class = "p-2"><%= (cart_item.item.with_tax_price).to_s(:delimited) %><!-- 金額 --></th>
              <th class = "p-2"><%= cart_item.quantity %> <!-- 個数 --></th>
              <th class = "p-2"><%= cart_item.subtotal.to_s(:delimited) %> <!-- 小計 --></th>
             <% @sum += cart_item.subtotal %>
@@ -40,7 +40,7 @@
     <table>
       <tr>
         <td class = "table-secondary">送料</td>
-        <td>1000</td>
+        <td>1,000</td>
       </tr>
       <tr>
         <td class = "table-secondary">合計金額</td>
@@ -48,15 +48,15 @@
       </tr>
       <tr>
         <td class = "table-secondary">請求金額</td>
-        <th><%= @sum + 1000 %></th>
+        <th><%= (@sum + 1000).to_s(:delimited)  %></th>
       </tr>
      </table>
-  　</div>
+    </div>
   </div>
 
 
       <tr>
-          <td colspan = "5">　</td>
+          <td colspan = "5"></td>
         </tr>
         <tr>
           <td class = "px-3 h4">支払方法
@@ -68,7 +68,7 @@
 
 
         <tr>
-    　　<td class ="px-3 h4">お届け先</td>
+        <td class ="px-3 h4">お届け先</td>
         〒<%= @order.post_number %>
         <%= @order.address %>
         <%= @order.name%>

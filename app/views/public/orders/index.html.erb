@@ -28,7 +28,7 @@
             </th>
 
             <th>
-              <%= order.total_payment %>
+              <%= order.total_payment.to_s(:dalimited) %>
             </th>
             <th>
               <%= order.order_status %>
