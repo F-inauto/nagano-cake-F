@@ -29,7 +29,7 @@
               <% end %>
             </td>
             <!--税抜価格-->
-            <th><%= number_to_currency(item.price, unit: "¥", format: "%u %n" ) %></th>
+            <td><%= number_to_currency(item.price, unit: "¥", format: "%u %n" ) %></td>
             <!--ジャンル-->
             <td><%= item.genre.name %></td>
             <!--Q：販売ステータスの表記の仕方-->
