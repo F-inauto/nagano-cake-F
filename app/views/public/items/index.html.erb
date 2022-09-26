@@ -35,7 +35,6 @@
   <tr>
     <th>
       ¥<%= item.with_tax_price.to_s(:dalimited) %>
-    </th>
   </tr>
 <% end %>
 </table>
@@ -43,6 +42,7 @@
   </div>
    <div class="row">
       <div class="center-block mx-auto"><br><br>
+
 <!--ページネーション加える-->
 <%= paginate @items %>
     </div>
