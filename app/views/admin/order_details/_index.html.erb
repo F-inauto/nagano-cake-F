@@ -15,9 +15,9 @@
         <% order.order_details.each do |order_detail| %>
         <tr>
           <td><%= order_detail.item.name %></td>
-          <td><%= order_detail.price %></td>
+          <td><%= order_detail.with_tax_price.to_s(:delimited)  %></td>
           <td><%= order_detail.quantity %></td>
-          <td><%= order_detail.price * order_detail.quantity %></td>
+          <td><%= (order_detail.price * order_detail.quantity).to_s(:delimited)  %></td>
           <td>
               <%= form_with model: order_detail , url:  admin_order_detail_path(order_detail), method: :patch, local: true  do |f| %>
               <%= f.select :making_status, OrderDetail.making_statuses_i18n.invert, {prompt: false}, class: "order_status" %>
@@ -33,7 +33,7 @@
     <table class = "table-striped table table-hover">
       <tr>
         <th>商品合計</th>
-        <th><%= order.total_payment - 1000 %></th>
+        <th><%= (order.total_payment - 1000).to_s(:delimited)  %></th>
       </tr>
       <tr>
         <th>送料</th>
@@ -41,7 +41,7 @@
       </tr>
       <tr>
         <th>請求金額合計</th>
-        <th><%= order.total_payment %></th>
+        <th><%= order.total_payment.to_s(:delimited) %></th>
       </tr>
     </table>
   </div>
