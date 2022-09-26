@@ -9,12 +9,12 @@
 
             <div class="field text-center mb-4">
               <%= f.label :"メールアドレス", class: "mr-3" %>
-              <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "w-50" %>
             </div>
 
             <div class="field text-center">
               <%= f.label :"パスワード", class: "mr-5" %>
-              <%= f.password_field :password, autocomplete: "current-password" %>
+              <%= f.password_field :password, autocomplete: "current-password", class: "w-50" %>
             </div>
 
             <div class="actions text-center mt-4">

@@ -1,87 +1,68 @@
 <div class="container">
-  <h3>注文情報入力</h3>
   <div class="row">
-    <%= form_with model: @order ,url:  order_order_confirm_path(current_customer) ,method: :post ,local:true do |f|%>
-    <table>
-      <div class="row">
-        <th>
-          支払方法
-        </th>
-        <tr>
+    <div class="col-md-8 offset-2">
+      <h3 class="my-4 mt-5">注文情報入力</h3>
+
+      <%= form_with model: @order ,url:  order_order_confirm_path(current_customer) ,method: :post ,local:true do |f|%>
+
+      <table class="table">
+        <thead>
+          <th>
+            支払方法
+          </th>
+          <tr>
           <th>
             <%= f.radio_button :payment_method, Order.payment_methods.key(0) %>
             <%= f.label :payment_method, "クレジットカード" %>
-          </th>
-        </tr>
-        <tr>
-          <th>
+          <br>
             <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
             <%= f.label :payment_method, "銀行振込"%>
           </th>
-        </tr>
-      </div>
-     </table>
-     <table>
-      <th>
-        お届け先
-      </th>
-      <tr>
-        <th>
-          <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-          <%= f.label :address_number_1, "ご自身の住所" %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          〒<%= current_customer.post_number %>
-          <%= current_customer.address %>
-          <%= current_customer.last_name %>
-          <%= current_customer.first_name %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.radio_button :address_number, 2 %>
-          <%= f.label :address_number_2, "登録済住所から選択" %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.radio_button :address_number, 3 %>
-          <%= f.label :address_number_3, "新しいお届け先" %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.label :post_number, "郵便番号(ハイフンなし)" %>
-          <%= f.text_field :post_number %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.label :address, "住所" %>
-
-          <%= f.text_field :address %>
-        </th>
-      </tr>
-      <tr>
-        <th>
-          <%= f.label :name, "宛名" %>
-          <%= f.text_field :name %>
-        </th>
-      </tr>
-      <tr>
-        <th>
+        </thead>
+      </table>
+      <table class="table">
+        <thead>
+          <th>
+            お届け先
+          </th>
+          <tr>
+          <th>
+            <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+            <%= f.label :address_number_1, "ご自身の住所" %>
+          <br>
+            〒<%= current_customer.post_number %>
+            <%= current_customer.address %>
+            <%= current_customer.last_name %>
+            <%= current_customer.first_name %>
+          </th>
+          <tr>
+          <th>
+            <%= f.radio_button :address_number, 2 %>
+            <%= f.label :address_number_2, "登録済住所から選択" %>
+          <br>
+            <%= f.select :address_id, options_from_collection_for_select(Address.all, :id, :address_display) %>
+          </th>
+          <tr>
+          <th>
+            <%= f.radio_button :address_number, 3 %>
+            <%= f.label :address_number_3, "新しいお届け先" %>
+          <br>
+            <%= f.label :post_number, "郵便番号(ハイフンなし)", class: "mr-3" %>
+            <%= f.text_field :post_number %>
+          <br>
+            <%= f.label :address, "住所", class: "mr-5" %>
+            <%= f.text_field :address, class: "w-75" %>
+          <br>
+            <%= f.label :name, "宛名", class: "mr-5"%>
+            <%= f.text_field :name %>
+          </th>
+        </thead>
+      </table>
       <!-- 選んでもらったデータを送ります -->
+      <div class="actions text-center mt-4">
         <%= f.submit "確認画面へ進む" ,class:'btn btn-primary' %>
-        </th>
-      </tr>
-     <% end %>
-     </table>
-   </div>
- </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
