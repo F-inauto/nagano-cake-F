@@ -19,7 +19,7 @@ gem "enum_help"
 gem 'kaminari'
 gem 'bootstrap'
 
-# 顧客側 【会員未登録】
+# 顧客側 (会員未登録)
 サイトの閲覧
 会員新規登録機能
 検索
